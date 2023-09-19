@@ -5,8 +5,6 @@ install:
 test:
 	python -m pytest -vv --cov=main test_*.py *.py
 
-
-
 format:	
 	black *.py 
 
