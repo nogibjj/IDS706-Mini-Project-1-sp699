@@ -11,11 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: install packages
-        run: make install
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.5'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Generate Graph and Markdown
+        run: python main.py
+
       - name: lint
         run: make lint
-      - name: test
-        run: make test
+
       - name: format
         run: make format
+
+      - name: deploy
+        run: make deploy
