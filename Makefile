@@ -5,11 +5,13 @@ install:
 test:
 	python -m pytest -vv --cov=main test_*.py *.py
 
+
+
 format:	
 	black *.py 
 
 lint:
-	ruff check *.py test_*.py
+	pylint --disable=R,C --ignore-patterns=test_*.py *.py
 
 deploy:
 	#deploy goes here
